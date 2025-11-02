@@ -2,8 +2,21 @@ import { View, Text, TouchableOpacity, Image , ScrollView } from 'react-native';
 import { useState } from 'react';
 import Data from '../../json/Data.json';
 
-export default function DisplayAllFood() {
-  const product = Data.basicProducts;
+export default function FoodList({categorie , textInput}) {
+const product = Data.basicProducts.filter(item => {
+  let CategorieMatch = true;
+  if (categorie && categorie.toLowerCase() !== "all") {
+    CategorieMatch = item.category.toLowerCase().includes(categorie.toLowerCase());
+  }
+
+  let TextMatch = true;
+  if (textInput && textInput.toLowerCase() !== "") {
+    TextMatch = item.name.toLowerCase().includes(textInput.toLowerCase());
+  }
+
+  return CategorieMatch && TextMatch;
+});
+
 
    const ProductCard = ({ product }) => {
   const images = {
@@ -41,10 +54,9 @@ export default function DisplayAllFood() {
   };
 
   return (
-      <View>
-        <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+      <View className='flex-1'>
+        <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
           <ProductCard product={product} />
-          <View className='mt-[50px] mb[40px]'></View>
         </ScrollView>
       </View>
   );

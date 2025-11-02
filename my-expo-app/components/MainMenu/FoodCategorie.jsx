@@ -25,11 +25,11 @@ export default function FoodCategorie({onCategorieChange}) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => handleCategorieClick("burgers")}
+          onPress={() => handleCategorieClick("burger")}
           activeOpacity={1}
         >
-          <View className={`${selectCategorie == "burgers" ? 'bg-yellow-400' : 'bg-gray-200'} rounded-[14px] w-20 h-10 flex items-center justify-center mr-2`}>
-            <Text className={`${selectCategorie == "burgers" ? 'text-white' : 'text-black'}`}>Burgers</Text>
+          <View className={`${selectCategorie == "burger" ? 'bg-yellow-400' : 'bg-gray-200'} rounded-[14px] w-20 h-10 flex items-center justify-center mr-2`}>
+            <Text className={`${selectCategorie == "burger" ? 'text-white' : 'text-black'}`}>Burgers</Text>
           </View>
         </TouchableOpacity>
 

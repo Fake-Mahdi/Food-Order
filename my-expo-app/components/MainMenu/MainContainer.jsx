@@ -1,15 +1,17 @@
-import { View, Text, TouchableOpacity,TextInput,Image } from 'react-native';
+import { View, Text, TouchableOpacity,TextInput,Image, ScrollView } from 'react-native';
 import { useState , useEffect } from 'react';
 import FoodCategorie from './FoodCategorie';
+import FoodList from './FoodList';
 
 export default function MainContainer() {
     const [selectedCategorie, setSelectedCategorie] = useState('');
-    const handleChange = ()=>{
-        console.log(selectedCategorie)
+    const [input , setInput] = useState('')
+    const handleChange = (value)=>{
+      setInput(value)
     }
-    useEffect(()=>{
-        handleChange()
-    },[selectedCategorie])
+useEffect(() => {
+  console.log(input);
+}, [input]);
   return (
     <View className='h-full'>
       <View className='mt-[80px]'>
@@ -18,7 +20,7 @@ export default function MainContainer() {
             className='flex-1 ml-3 font-quicksand'
             placeholderTextColor="black"
             placeholder='Search What you desire Here'
-            onChangeText={(value) => { handlechange(value) }}
+            onChangeText={(value) => { handleChange(value) }}
           />
 
           <View>
@@ -30,7 +32,11 @@ export default function MainContainer() {
           </View>
         </View>
         <FoodCategorie onCategorieChange={setSelectedCategorie}/>
-
+      </View>
+      <View>
+        <ScrollView className='mt-2'>
+          <FoodList categorie = {selectedCategorie} textInput = {input}/>
+        </ScrollView>
       </View>
     </View>
   );

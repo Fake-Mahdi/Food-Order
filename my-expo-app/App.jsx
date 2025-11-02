@@ -8,6 +8,7 @@ import SuccessLogin from './app/SuccessLogin';
 import CategoriePage from './app/CategoriePage';
 import SearchPage from './app/SearchPage';
 import MainMenuPage from './app/MainMenuPage'
+import DisplayFood from 'app/DisplayFood';
 import { Image, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -51,22 +52,23 @@ const firstStackScreens = [
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
-
-
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
 ];
 
 const searchStackScreens = [
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
 ];
 const categoriePageScreens = [
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
-  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
   
 ];
 const MainMenuScreens = [
@@ -74,9 +76,17 @@ const MainMenuScreens = [
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
   
 ];
 
+const DisplayFoodScreens = [
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+]
 
 // 🔹 Create stacks using the template
 const FirstPageStack = () => (
@@ -93,6 +103,9 @@ const CategoriePageStack = () => (
 
 const MainMenuStack = () => (
   <StackTemplate routename="MainMenuPage" screens={MainMenuScreens} />
+);
+const DisplayFoodStack = () => (
+  <StackTemplate routename="DisplayFoodPage" screens={DisplayFoodScreens} />
 );
 
 export default function App() {
@@ -182,6 +195,7 @@ export default function App() {
               tabBarIcon: TabIcons(require('./assets/icons/person.png')),
             }}
           />
+          
         </BottomTab.Navigator>
       </NavigationContainer>
     </View>

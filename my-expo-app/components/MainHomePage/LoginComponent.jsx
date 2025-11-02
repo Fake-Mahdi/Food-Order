@@ -47,7 +47,7 @@ export default function LoginComponent({onStatusChange , navigation})
                 <TouchableOpacity
                 className='flex-1 bg-yellow-500 h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
-                onPress={()=> {navigation.navigate("CategoriePage")}}
+                onPress={()=> {navigation.navigate("Main Page", { screen: "DisplayFoodPage" })}}
                 >
                     <Text
                     style={{fontSize : 23}}
