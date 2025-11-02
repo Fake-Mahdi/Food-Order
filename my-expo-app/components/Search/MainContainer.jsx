@@ -1,6 +1,8 @@
 import { View, Text, TouchableOpacity,TextInput , ScrollView , Image} from 'react-native';
 import EmptyComponent from './EmptyComponent';
 import { useEffect, useState } from 'react';
+import DisplayFood from './DisplayFood';
+import DisplayAllFood from './DisplayAllFood';
 
 export default function MainContainer(){
 
@@ -36,8 +38,8 @@ export default function MainContainer(){
 
             <View className='mt-[35px]'>
                 { searchInput.length > 0 ?
-                <Text>Funcionality still not added yet</Text>
-                : <EmptyComponent/>
+                <DisplayFood input = {searchInput}/>
+                :  <DisplayAllFood/>
                 }
             </View>
         </View>

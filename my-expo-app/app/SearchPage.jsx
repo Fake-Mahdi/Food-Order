@@ -7,7 +7,7 @@ import MainContainer from '../components/Search/MainContainer';
 export default function SearchPage(){
     return(
 
-        <View className='w-full h-full'>
+        <View className='w-full h-full bg-white'>
             <MainContainer/>
         </View>
     )

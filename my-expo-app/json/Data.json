@@ -1,0 +1,91 @@
+{
+  "basicProducts": [
+     {
+      "name": "Veggie Delight",
+      "image": "veggiedelight",
+      "price": 8.49,
+      "category": "pizza"
+    },
+    {
+      "name": "Vegier Burger",
+      "image": "vegierBurger",
+      "price": 7.29,
+      "category": "burger"
+    },
+    {
+      "name": "Wendy Burger",
+      "image": "wendyburger",
+      "price": 8.99,
+      "category": "burger"
+    },
+    {
+      "name": "Big Beef Burrito",
+      "image": "bigbeefburrito",
+      "price": 7.99,
+      "category": "burrito"
+    },
+    {
+      "name": "Chicken Wrap",
+      "image": "chickenwrap",
+      "price": 6.49,
+      "category": "burrito"
+    },
+    {
+      "name": "Margherita Magic",
+      "image": "margheritamagic",
+      "price": 9.99,
+      "category": "pizza"
+    }
+  ],
+
+  "detailedProducts": [
+    {
+      "name": "Big Beef Burrito",
+      "image": "bigbeefburrito.png",
+      "description": "A hearty burrito stuffed with seasoned beef, rice, beans, and melted cheese, wrapped in a warm tortilla.",
+      "calories": 850,
+      "protein": 35,
+      "category": "burrito"
+    },
+    {
+      "name": "Chicken Wrap",
+      "image": "chickenwrap.png",
+      "description": "Tender grilled chicken with lettuce, tomato, and creamy sauce, rolled in a soft tortilla.",
+      "calories": 620,
+      "protein": 28,
+      "category": "burrito"
+    },
+    {
+      "name": "Margherita Magic",
+      "image": "margheritamagic.png",
+      "description": "Classic Margherita pizza with tomato sauce, fresh mozzarella, and basil leaves for a pure Italian taste.",
+      "calories": 780,
+      "protein": 30,
+      "category": "pizza"
+    },
+    {
+      "name": "Veggie Delight",
+      "image": "veggiedelight.png",
+      "description": "A colorful mix of bell peppers, onions, olives, and mushrooms topped on a cheese-rich pizza base.",
+      "calories": 720,
+      "protein": 25,
+      "category": "pizza"
+    },
+    {
+      "name": "Vegier Burger",
+      "image": "vegierBurger.png",
+      "description": "A crispy veggie patty with lettuce, tomato, and tangy sauce served in a soft sesame bun.",
+      "calories": 540,
+      "protein": 20,
+      "category": "burger"
+    },
+    {
+      "name": "Wendy Burger",
+      "image": "wendyburger.png",
+      "description": "Juicy beef patty layered with cheddar cheese, pickles, and house sauce on a toasted bun.",
+      "calories": 880,
+      "protein": 38,
+      "category": "burger"
+    }
+  ]
+}

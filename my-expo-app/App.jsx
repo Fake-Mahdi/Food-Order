@@ -7,6 +7,7 @@ import FirstPage from './app/FirstPage';
 import SuccessLogin from './app/SuccessLogin';
 import CategoriePage from './app/CategoriePage';
 import SearchPage from './app/SearchPage';
+import MainMenuPage from './app/MainMenuPage'
 import { Image, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -50,6 +51,7 @@ const firstStackScreens = [
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
 
 
 ];
@@ -58,16 +60,22 @@ const searchStackScreens = [
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
 ];
 const categoriePageScreens = [
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } }
   
 ];
-
-
-
+const MainMenuScreens = [
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  
+];
 
 
 // 🔹 Create stacks using the template
@@ -81,6 +89,10 @@ const SearchStack = () => (
 
 const CategoriePageStack = () => (
   <StackTemplate routename="CategoriePage" screens={categoriePageScreens} />
+);
+
+const MainMenuStack = () => (
+  <StackTemplate routename="MainMenuPage" screens={MainMenuScreens} />
 );
 
 export default function App() {
@@ -146,21 +158,28 @@ export default function App() {
             name="Main Page"
             component={FirstPageStack}
             options={{
-              tabBarIcon: TabIcons(require('./assets/icons/person.png')),
+              tabBarIcon: TabIcons(require('./assets/icons/home.png')),
             }}
           />
           <BottomTab.Screen
-            name="SearchPage"
+            name="SearchPageTab"
             component={SearchStack}
             options={{
               tabBarIcon: TabIcons(require('./assets/icons/search.png')),
             }}
           />
           <BottomTab.Screen
-            name="CategoriePage"
+            name="CategoriePageTab"
             component={CategoriePageStack}
             options={{
               tabBarIcon: TabIcons(require('./assets/icons/bag.png')),
+            }}
+          />
+          <BottomTab.Screen
+            name="MainMenuTab"
+            component={MainMenuStack}
+            options={{
+              tabBarIcon: TabIcons(require('./assets/icons/person.png')),
             }}
           />
         </BottomTab.Navigator>

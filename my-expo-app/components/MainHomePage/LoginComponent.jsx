@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity,TextInput } from 'react-native';
 import { useState } from 'react';
-
+import SuccessLogin from '../../app/SuccessLogin';
 
 export default function LoginComponent({onStatusChange , navigation})
 {
@@ -47,7 +47,7 @@ export default function LoginComponent({onStatusChange , navigation})
                 <TouchableOpacity
                 className='flex-1 bg-yellow-500 h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
-                onPress={()=> {navigation.navigate("SuccessLogin")}}
+                onPress={()=> {navigation.navigate("CategoriePage")}}
                 >
                     <Text
                     style={{fontSize : 23}}
