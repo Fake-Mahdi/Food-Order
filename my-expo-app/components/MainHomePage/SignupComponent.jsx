@@ -72,7 +72,7 @@ export default function SignupComponent({onStatusChange})
 
             <View className='flex flex-row item items-center bg-black mt-[30px] mb-[15px] h-[50px] rounded-[24px]'>
                 <TouchableOpacity
-                className='flex-1 bg-yellow-500 h-full items-center justify-center rounded-[24px]'
+                className='flex-1 bg-buttonColor h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
                 onPress={() => {LoginStatushandle()}}
                 >

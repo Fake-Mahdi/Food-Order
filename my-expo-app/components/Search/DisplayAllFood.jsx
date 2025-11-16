@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity, Image , ScrollView } from 'react-native';
 import { useState } from 'react';
 import Data from '../../json/Data.json';
 
-export default function DisplayAllFood() {
+export default function DisplayAllFood({navigation}) {
   const product = Data.basicProducts;
 
-   const ProductCard = ({ product }) => {
+   const ProductCard = ({product }) => {
   const images = {
       wendyburger: require("../../assets/homemenu/wendyburger.png"),
       margheritamagic: require("../../assets/homemenu/margheritamagic.png"),
@@ -17,7 +17,9 @@ export default function DisplayAllFood() {
     return (
       <View className="flex flex-row flex-wrap justify-center mt-10">
         {product.map(({ name, image, price }) => (
-          <TouchableOpacity key={name} className="m-2">
+          <TouchableOpacity key={name} className="m-2"
+          onPress={() => {navigation.navigate('SearchPageTab' , {screen : "DisplayFoodPage" , params : {name}})}}
+          >
             <View className="bg-gray-100 rounded-[18px] mb-4">
               <Image
                 className="-mt-10"

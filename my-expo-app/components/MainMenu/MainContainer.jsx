@@ -3,7 +3,7 @@ import { useState , useEffect } from 'react';
 import FoodCategorie from './FoodCategorie';
 import FoodList from './FoodList';
 
-export default function MainContainer() {
+export default function MainContainer({navigation}) {
     const [selectedCategorie, setSelectedCategorie] = useState('');
     const [input , setInput] = useState('')
     const handleChange = (value)=>{
@@ -31,11 +31,11 @@ useEffect(() => {
             />
           </View>
         </View>
-        <FoodCategorie onCategorieChange={setSelectedCategorie}/>
+        <FoodCategorie navigation={navigation} onCategorieChange={setSelectedCategorie}/>
       </View>
       <View>
         <ScrollView className='mt-2'>
-          <FoodList categorie = {selectedCategorie} textInput = {input}/>
+          <FoodList navigation = {navigation} categorie = {selectedCategorie} textInput = {input}/>
         </ScrollView>
       </View>
     </View>

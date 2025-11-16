@@ -39,53 +39,59 @@
   ],
 
   "detailedProducts": [
-    {
-      "name": "Big Beef Burrito",
-      "image": "bigbeefburrito.png",
-      "description": "A hearty burrito stuffed with seasoned beef, rice, beans, and melted cheese, wrapped in a warm tortilla.",
-      "calories": 850,
-      "protein": 35,
-      "category": "burrito"
-    },
-    {
-      "name": "Chicken Wrap",
-      "image": "chickenwrap.png",
-      "description": "Tender grilled chicken with lettuce, tomato, and creamy sauce, rolled in a soft tortilla.",
-      "calories": 620,
-      "protein": 28,
-      "category": "burrito"
-    },
-    {
-      "name": "Margherita Magic",
-      "image": "margheritamagic.png",
-      "description": "Classic Margherita pizza with tomato sauce, fresh mozzarella, and basil leaves for a pure Italian taste.",
-      "calories": 780,
-      "protein": 30,
-      "category": "pizza"
-    },
-    {
-      "name": "Veggie Delight",
-      "image": "veggiedelight.png",
-      "description": "A colorful mix of bell peppers, onions, olives, and mushrooms topped on a cheese-rich pizza base.",
-      "calories": 720,
-      "protein": 25,
-      "category": "pizza"
-    },
-    {
-      "name": "Vegier Burger",
-      "image": "vegierBurger.png",
-      "description": "A crispy veggie patty with lettuce, tomato, and tangy sauce served in a soft sesame bun.",
-      "calories": 540,
-      "protein": 20,
-      "category": "burger"
-    },
-    {
-      "name": "Wendy Burger",
-      "image": "wendyburger.png",
-      "description": "Juicy beef patty layered with cheddar cheese, pickles, and house sauce on a toasted bun.",
-      "calories": 880,
-      "protein": 38,
-      "category": "burger"
-    }
-  ]
+  {
+    "name": "Big Beef Burrito",
+    "price": 7.99,
+    "image": "bigbeefburrito.png",
+    "description": "A generously sized burrito packed with seasoned, juicy beef, fluffy rice, tender beans, and gooey melted cheese, wrapped in a warm, soft tortilla. Perfectly balanced with a hint of spices, this hearty meal is both filling and delicious.",
+    "calories": 850,
+    "protein": 35,
+    "category": "burrito"
+  },
+  {
+    "name": "Chicken Wrap",
+    "price": 6.49,
+    "image": "chickenwrap.png",
+    "description": "Tender, grilled chicken breast rolled in a soft tortilla with fresh crisp lettuce, ripe tomatoes, and a creamy, flavorful sauce. Light yet satisfying, this wrap is ideal for a quick and healthy meal on the go.",
+    "calories": 620,
+    "protein": 28,
+    "category": "burrito"
+  },
+  {
+    "name": "Margherita Magic",
+    "price": 9.99,
+    "image": "margheritamagic.png",
+    "description": "Classic Italian Margherita pizza featuring a perfectly baked crust, rich tomato sauce, creamy fresh mozzarella, and fragrant basil leaves. A simple yet irresistible pizza that delivers authentic Italian flavor in every bite.",
+    "calories": 780,
+    "protein": 30,
+    "category": "pizza"
+  },
+  {
+    "name": "Veggie Delight",
+    "price": 8.49,
+    "image": "veggiedelight.png",
+    "description": "A colorful, wholesome pizza loaded with crisp bell peppers, sweet onions, earthy olives, and tender mushrooms atop a rich, cheese-covered base. Every slice bursts with fresh, vibrant flavors for veggie lovers.",
+    "calories": 720,
+    "protein": 25,
+    "category": "pizza"
+  },
+  {
+    "name": "Vegier Burger",
+    "price": 7.29,
+    "image": "vegierBurger.png",
+    "description": "A hearty veggie patty grilled to perfection and served on a soft sesame bun with fresh lettuce, juicy tomatoes, and a tangy sauce. Deliciously satisfying, this burger is a perfect choice for a plant-based meal without compromising on taste.",
+    "calories": 540,
+    "protein": 20,
+    "category": "burger"
+  },
+  {
+    "name": "Wendy Burger",
+    "price": 8.99,
+    "image": "wendyburger.png",
+    "description": "Juicy, perfectly seasoned beef patty topped with melted cheddar cheese, crisp lettuce, fresh tomatoes, crunchy pickles, and house sauce, all sandwiched in a toasted bun. A classic burger experience with every bite bursting with flavor.",
+    "calories": 880,
+    "protein": 38,
+    "category": "burger"
+  }
+]
 }

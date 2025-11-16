@@ -8,12 +8,14 @@ import SuccessLogin from './app/SuccessLogin';
 import CategoriePage from './app/CategoriePage';
 import SearchPage from './app/SearchPage';
 import MainMenuPage from './app/MainMenuPage'
+import CartPage from './app/Cart';
 import DisplayFood from 'app/DisplayFood';
 import { Image, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { setLoginStatus, GetLoginStatus } from "./api/loginStatus";
 import "./global.css";
+import { CartContext, CartProvider } from './global/Context';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -51,6 +53,7 @@ const TabIcons = (source) => ({ color, size }) => (
 const firstStackScreens = [
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
@@ -59,6 +62,7 @@ const firstStackScreens = [
 const searchStackScreens = [
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
@@ -66,6 +70,7 @@ const searchStackScreens = [
 const categoriePageScreens = [
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
@@ -74,6 +79,7 @@ const categoriePageScreens = [
 const MainMenuScreens = [
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
@@ -83,10 +89,21 @@ const MainMenuScreens = [
 const DisplayFoodScreens = [
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
 ]
+
+const CartScreens = [
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
+  { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
+  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
+  { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+]
+
 
 // 🔹 Create stacks using the template
 const FirstPageStack = () => (
@@ -108,6 +125,9 @@ const DisplayFoodStack = () => (
   <StackTemplate routename="DisplayFoodPage" screens={DisplayFoodScreens} />
 );
 
+const CartPageStack = () => (
+  <StackTemplate routename="CartPage" screens={CartScreens} />
+);
 export default function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(GetLoginStatus());
@@ -139,6 +159,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'transparent' }}>
+      <CartProvider>
       <NavigationContainer>
         <BottomTab.Navigator
           screenOptions={{
@@ -182,8 +203,8 @@ export default function App() {
             }}
           />
           <BottomTab.Screen
-            name="CategoriePageTab"
-            component={CategoriePageStack}
+            name="CartePageTab"
+            component={CartPageStack}
             options={{
               tabBarIcon: TabIcons(require('./assets/icons/bag.png')),
             }}
@@ -198,6 +219,7 @@ export default function App() {
           
         </BottomTab.Navigator>
       </NavigationContainer>
+      </CartProvider>
     </View>
   );
 }

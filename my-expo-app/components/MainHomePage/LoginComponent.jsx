@@ -45,7 +45,7 @@ export default function LoginComponent({onStatusChange , navigation})
 
             <View className='flex flex-row item items-center bg-black mt-[30px] mb-[30px] h-[50px] rounded-[24px]'>
                 <TouchableOpacity
-                className='flex-1 bg-yellow-500 h-full items-center justify-center rounded-[24px]'
+                className='flex-1 bg-buttonColor h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
                 onPress={()=> {navigation.navigate("Main Page", { screen: "DisplayFoodPage" })}}
                 >
@@ -69,7 +69,7 @@ export default function LoginComponent({onStatusChange , navigation})
                     >
                         <Text
                         style={{fontSize: 18}}
-                        className='text-yellow-500 font-quicksand'
+                        className='text-buttonColor font-quicksand'
                         > Sign up</Text>
                     </TouchableOpacity>
                 </View>

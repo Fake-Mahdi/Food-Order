@@ -3,7 +3,7 @@ import { useState , useEffect} from 'react';
 import Data from '../../json/Data.json';
 import EmptyComponent from './EmptyComponent';
 
-export default function DisplayFood({input}) {
+export default function DisplayFood({navigation  , input}) {
   const product = Data.basicProducts.filter(element =>
   element.name.toLowerCase().includes(input.toLowerCase()) ||
   element.category.toLowerCase().includes(input.toLowerCase())
@@ -13,7 +13,7 @@ export default function DisplayFood({input}) {
     console.log(input)
     console.log(product)
 }, [input])
-const ProductCard = ({ product }) => {
+const ProductCard = ({product }) => {
   const images = {
       wendyburger: require("../../assets/homemenu/wendyburger.png"),
       margheritamagic: require("../../assets/homemenu/margheritamagic.png"),
@@ -25,7 +25,9 @@ const ProductCard = ({ product }) => {
     return (
       <View className="flex flex-row flex-wrap justify-center mt-10">
         {product.map(({ name, image, price }) => (
-          <TouchableOpacity key={name} className="m-2">
+          <TouchableOpacity 
+          onPress={() => {navigation.navigate('SearchPageTab' , {screen : "DisplayFoodPage" , params : {name}})}}
+          key={name} className="m-2">
             <View className="bg-gray-100 rounded-[18px] mb-4">
               <Image
                 className="-mt-10"

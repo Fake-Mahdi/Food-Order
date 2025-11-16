@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import MainContainer from '../components/Search/MainContainer';
 
 
-export default function SearchPage(){
+export default function SearchPage({navigation}){
     return(
 
         <View className='w-full h-full bg-white'>
-            <MainContainer/>
+            <MainContainer navigation={navigation}/>
         </View>
     )
 }

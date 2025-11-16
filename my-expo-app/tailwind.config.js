@@ -8,7 +8,9 @@ module.exports = {
         customRed: '#D33B0D', 
         customYellow : "#EB920C",
         customGreen: "#084137",
-        customSecondRed : "#DF5A0C"
+        customSecondRed : "#DF5A0C",
+        constumOrange : "#FE8C000D",
+        buttonColor : "#FE8C00"
       },
       fontFamily: {
         quicksand: ['Quicksand-Regular', 'sans-serif'],

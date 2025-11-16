@@ -19,7 +19,7 @@ export default function MainContainer({navigation}) {
         onPress={() => setActive('login')}
         activeOpacity={1}
       >
-        <Text className={`text-[18px] font-quicksand-bold ${active === 'login' ? 'text-yellow-400' : 'text-black'}`}>
+        <Text className={`text-[18px] font-quicksand-bold ${active === 'login' ? 'text-buttonColor' : 'text-black'}`}>
           Log In
         </Text>
       </TouchableOpacity>
@@ -29,7 +29,7 @@ export default function MainContainer({navigation}) {
         onPress={() => setActive('signup')}
         activeOpacity={1}
       >
-        <Text className={`text-[18px] font-quicksand-bold ${active === 'signup' ? 'text-yellow-400' : 'text-black'}`}>
+        <Text className={`text-[18px] font-quicksand-bold ${active === 'signup' ? 'text-buttonColor' : 'text-black'}`}>
           Sign Up
         </Text>
       </TouchableOpacity>

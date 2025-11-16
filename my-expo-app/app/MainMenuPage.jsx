@@ -7,7 +7,7 @@ import MainContainer from 'components/MainMenu/MainContainer';
 export default function MainMenuPage({navigation}){
     return(
         <View className='h-full bg-white'>
-            <MainContainer/>
+            <MainContainer navigation={navigation}/>
         </View>
     );
 }

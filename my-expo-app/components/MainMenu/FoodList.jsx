@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image , ScrollView } from 'react-native';
 import { useState } from 'react';
 import Data from '../../json/Data.json';
 
-export default function FoodList({categorie , textInput}) {
+export default function FoodList({navigation ,categorie , textInput}) {
 const product = Data.basicProducts.filter(item => {
   let CategorieMatch = true;
   if (categorie && categorie.toLowerCase() !== "all") {
@@ -30,7 +30,9 @@ const product = Data.basicProducts.filter(item => {
     return (
       <View className="flex flex-row flex-wrap justify-center mt-10">
         {product.map(({ name, image, price }) => (
-          <TouchableOpacity key={name} className="m-2">
+          <TouchableOpacity 
+          onPress={() => {navigation.navigate('SearchPageTab' , {screen : "DisplayFoodPage" , params : {name}})}}
+          key={name} className="m-2">
             <View className="bg-gray-100 rounded-[18px] mb-4">
               <Image
                 className="-mt-10"

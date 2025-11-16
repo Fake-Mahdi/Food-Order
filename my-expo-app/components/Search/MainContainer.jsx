@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import DisplayFood from './DisplayFood';
 import DisplayAllFood from './DisplayAllFood';
 
-export default function MainContainer(){
+export default function MainContainer({navigation}){
 
     const [searchInput , setSearchInput] = useState("")
     const handlechange = (value) =>
@@ -38,8 +38,8 @@ export default function MainContainer(){
 
             <View className='mt-[35px]'>
                 { searchInput.length > 0 ?
-                <DisplayFood input = {searchInput}/>
-                :  <DisplayAllFood/>
+                <DisplayFood navigation = {navigation} input = {searchInput}/>
+                :  <DisplayAllFood navigation = {navigation}/>
                 }
             </View>
         </View>
