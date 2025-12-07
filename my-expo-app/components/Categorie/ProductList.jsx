@@ -1,12 +1,14 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 
-export default function ProductList() {  
+export default function ProductList({navigation}) {  
   return (
     <View className='flex-col'>
 
      
-      <TouchableOpacity className='bg-customRed w-full h-[190px] rounded-[24px] flex flex-row overflow-hidden mb-6'>
+      <TouchableOpacity 
+      onPress={()=> { navigation.navigate('SearchPageTab' ,{screen: 'DisplayFood'})}}
+      className='bg-customRed w-full h-[190px] rounded-[24px] flex flex-row overflow-hidden mb-6'>
         <View className='flex-1 relative rounded-[24px]'>
           <Image
             style={{ width: '100%', height: '100%' }}

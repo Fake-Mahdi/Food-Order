@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useEffect, useState } from 'react';
 import { CartContext } from 'global/Context';
-export default function CardsComponent({ name, price, image, ordernumber , remove }) {
+export default function CardsComponent({ indexkey , name, price, image, ordernumber , remove }) {
 
     // set initial order from props
     const [numberOfOrder, setNumberOfOrder] = useState(ordernumber);
@@ -32,7 +32,7 @@ export default function CardsComponent({ name, price, image, ordernumber , remov
             <View className='bg-gray-200 h-[150px] flex-row items-center mx-6 rounded-[14px] relative'>
                 
                 {/* product image from props */}
-                <View>
+                <View key={indexkey}>
                     <Image 
                         source={images[image]} 
                         resizeMode='contain'
@@ -53,19 +53,7 @@ export default function CardsComponent({ name, price, image, ordernumber , remov
 
                     <View className='flex-row items-center gap-3'>
 
-                        <TouchableOpacity onPress={handleMinus} activeOpacity={1}>
-                            <View className="bg-constumOrange rounded-full w-12 h-12 flex items-center justify-center">
-                                <Text style={{ fontSize: 48, lineHeight: 42 }} className="text-buttonColor font-quicksand-semibold">-</Text>
-                            </View>
-                        </TouchableOpacity>
-
-                        <View><Text>{numberOfOrder}</Text></View>
-
-                        <TouchableOpacity onPress={handlePlus} activeOpacity={1}>
-                            <View className="bg-constumOrange rounded-full w-12 h-12 flex items-center justify-center">
-                                <Text style={{ fontSize: 48, lineHeight: 42 }} className="text-buttonColor font-quicksand-semibold">+</Text>
-                            </View>
-                        </TouchableOpacity>
+                        <View><Text className='font-quicksand-bold'>How Much PIECE : {numberOfOrder}</Text></View>
 
                     </View>
                 </View>

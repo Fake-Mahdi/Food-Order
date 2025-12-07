@@ -10,6 +10,7 @@ import SearchPage from './app/SearchPage';
 import MainMenuPage from './app/MainMenuPage'
 import CartPage from './app/Cart';
 import DisplayFood from 'app/DisplayFood';
+import ProfilePage from 'app/ProfilePage';
 import { Image, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -37,6 +38,12 @@ const StackTemplate = ({ routename, screens }) => {
   );
 };
 
+const AuthStack = () => (
+  <Stack.Navigator initialRouteName="FirstPage" screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="FirstPage" component={FirstPage} />
+  </Stack.Navigator>
+);
+
 // 🔹 Icon component: only color changes for active/inactive
 const TabIcons = (source) => ({ color, size }) => (
   <Image
@@ -51,17 +58,15 @@ const TabIcons = (source) => ({ color, size }) => (
 
 // 🔹 Define screens for each stack
 const firstStackScreens = [
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
-  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
-  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
-  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+  {name: 'CartPage', component: CartPage, options: { headerShown: false }},
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
 ];
 
 const searchStackScreens = [
   { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
@@ -69,45 +74,45 @@ const searchStackScreens = [
 ];
 const categoriePageScreens = [
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
-  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
   
 ];
 const MainMenuScreens = [
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
-  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
   
 ];
 
 const DisplayFoodScreens = [
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
-  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
 ]
 
 const CartScreens = [
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
-  { name: 'FirstPage', component: FirstPage, options: { headerShown: false } },
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
-  { name: 'SearchPage', component: SearchPage, options: { headerShown: false } },
-  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } }
+  { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
 ]
 
+const ProfileScreens = [
+  {name: 'ProfilePage', component: ProfilePage, options: { headerShown: false }},
+
+]
 
 // 🔹 Create stacks using the template
 const FirstPageStack = () => (
-  <StackTemplate routename="FirstPage" screens={firstStackScreens} />
+  <StackTemplate routename="CategoriePage" screens={firstStackScreens} />
 );
 
 const SearchStack = () => (
@@ -127,6 +132,9 @@ const DisplayFoodStack = () => (
 
 const CartPageStack = () => (
   <StackTemplate routename="CartPage" screens={CartScreens} />
+);
+const ProfileStack = () => (
+  <StackTemplate routename="ProfilePage" screens={ProfileScreens} />
 );
 export default function App() {
 
@@ -161,11 +169,12 @@ export default function App() {
     <View style={{ flex: 1, backgroundColor: 'transparent' }}>
       <CartProvider>
       <NavigationContainer>
-        <BottomTab.Navigator
+        {isLoggedIn ? (
+          <BottomTab.Navigator
           screenOptions={{
             headerShown: false,
             tabBarShowLabel: false,
-            tabBarActiveTintColor: 'yellow',
+            tabBarActiveTintColor: '#FE8C00',
             tabBarInactiveTintColor: 'gray',  
             tabBarItemStyle: {
               flexDirection: 'row',
@@ -197,7 +206,7 @@ export default function App() {
           />
           <BottomTab.Screen
             name="SearchPageTab"
-            component={SearchStack}
+            component={MainMenuStack}
             options={{
               tabBarIcon: TabIcons(require('./assets/icons/search.png')),
             }}
@@ -210,14 +219,15 @@ export default function App() {
             }}
           />
           <BottomTab.Screen
-            name="MainMenuTab"
-            component={MainMenuStack}
+            name="ProfileTab"
+            component={ProfileStack}
             options={{
               tabBarIcon: TabIcons(require('./assets/icons/person.png')),
             }}
           />
           
         </BottomTab.Navigator>
+        ) : (<AuthStack/>)}
       </NavigationContainer>
       </CartProvider>
     </View>

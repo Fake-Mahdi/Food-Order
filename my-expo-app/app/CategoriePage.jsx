@@ -1,8 +1,7 @@
 import { TextInput, View, Text, Button, FlatList, Image, ScrollView } from 'react-native';
 import MainContainer from '../components/Categorie/MainContainer';
 import '../global.css';
-import { useState, useEffect } from 'react';
-import { fetchMovies , popularMovies } from '../services/api';
+
 
 export default function CategoriePage({navigation}){
     return(
@@ -10,7 +9,7 @@ export default function CategoriePage({navigation}){
             <ScrollView
             showsVerticalScrollIndicator={false}
             >
-                <MainContainer/>
+                <MainContainer navigation = {navigation}/>
             </ScrollView>
         </View>
     )

@@ -3,10 +3,10 @@ import { useState } from 'react';
 import ProductList from './ProductList';
  
 
-export default function MainContainer(){
+export default function MainContainer({navigation}){
     return(
         <View className='bg-white mt-[100px] w-[90%] mx-5'>
-            <ProductList/>
+            <ProductList navigation = {navigation}/>
         </View>
     )
 }
