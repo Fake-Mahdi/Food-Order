@@ -37,7 +37,7 @@ export default function SignupComponent({onStatusChange})
     }
    const PostRequest = async () => {
     try {
-        const response = await fetch("http://172.16.3.40:6747/Signup", {
+        const response = await fetch("http://192.168.1.6:6747/Signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -86,6 +86,7 @@ export default function SignupComponent({onStatusChange})
             placeholder='Enter Your Full Name...'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
+            value={name}
             />
             </View>
 
@@ -104,6 +105,7 @@ export default function SignupComponent({onStatusChange})
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
             onChangeText={(value) => {emailHandleChange(value)}}
+            value={email}
             />
             </View>
 
@@ -122,6 +124,7 @@ export default function SignupComponent({onStatusChange})
             placeholder='Enter You Password'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
+            value={password}
             />
             </View>
 
