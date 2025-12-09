@@ -1,46 +1,66 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform
+} from 'react-native';
 import { useState } from 'react';
 import LoginComponent from './LoginComponent';
-import SignupComponent from './SignupComponent'
+import SignupComponent from './SignupComponent';
 
-export default function MainContainer({navigation}) {
-  const [active, setActive] = useState('login'); 
-  const handleStatusChange = (new_name) =>
-  {
-    setActive(new_name)
-  }
+export default function MainContainer({ navigation }) {
+  const [active, setActive] = useState('login');
+
+  const handleStatusChange = (new_name) => {
+    setActive(new_name);
+  };
 
   return (
-    <View>
-      <View className="flex flex-row justify-center items-center w-full px-10 h-[60px] bg-gray-200 mt-[15px] p-2 rounded-[8px]">
-      
-      <TouchableOpacity
-        className={`flex-1 items-center justify-center h-full rounded-[8px] ${active === 'login' ? 'bg-white' : ''}`}
-        onPress={() => setActive('login')}
-        activeOpacity={1}
+    <View style={{ flex: 1}}>
+
+      {/* Top tab - fixed */}
+      <View className="flex flex-row justify-center items-center w-full px-4 py-2 bg-gray-200 rounded-[8px] mt-4">
+        <TouchableOpacity
+          className={`flex-1 items-center justify-center py-3 rounded-[8px] ${active === 'login' ? 'bg-white' : ''}`}
+          onPress={() => setActive('login')}
+          activeOpacity={1}
+        >
+          <Text className={`text-[18px] font-quicksand-bold ${active === 'login' ? 'text-buttonColor' : 'text-black'}`}>
+            Log In
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          className={`flex-1 items-center justify-center py-3 rounded-[8px] ${active === 'signup' ? 'bg-white' : ''}`}
+          onPress={() => setActive('signup')}
+          activeOpacity={1}
+        >
+          <Text className={`text-[18px] font-quicksand-bold ${active === 'signup' ? 'text-buttonColor' : 'text-black'}`}>
+            Sign Up
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Scrollable form area */}
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
       >
-        <Text className={`text-[18px] font-quicksand-bold ${active === 'login' ? 'text-buttonColor' : 'text-black'}`}>
-          Log In
-        </Text>
-      </TouchableOpacity>
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 10 }}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          {active === "login"
+            ? <LoginComponent onStatusChange={handleStatusChange} navigation={navigation} />
+            : <SignupComponent onStatusChange={handleStatusChange} />
+          }
+        </ScrollView>
+      </KeyboardAvoidingView>
 
-      <TouchableOpacity
-        className={`flex-1 items-center justify-center h-full rounded-[8px] ${active === 'signup' ? 'bg-white' : ''}`}
-        onPress={() => setActive('signup')}
-        activeOpacity={1}
-      >
-        <Text className={`text-[18px] font-quicksand-bold ${active === 'signup' ? 'text-buttonColor' : 'text-black'}`}>
-          Sign Up
-        </Text>
-      </TouchableOpacity>
-
-    </View>
-
-    <View className='mx-[10px] mt-[10px]'>
-      {active == "login" 
-      ? <LoginComponent onStatusChange ={handleStatusChange} navigation={navigation}/> 
-      : <SignupComponent onStatusChange ={handleStatusChange}/>}
-    </View>
     </View>
   );
 }

@@ -1,9 +1,61 @@
 import { View, Text, TouchableOpacity,TextInput } from 'react-native';
 import { useState } from 'react';
 import SuccessLogin from '../../app/SuccessLogin';
+import {setLoginStatus , GetLoginStatus} from "../../api/loginStatus"
+
 
 export default function LoginComponent({onStatusChange , navigation})
 {
+    const [name , setName] = useState("")
+    const [password , setPassword] = useState("")
+
+    const nameHandleChange = (value) => {
+        setName(value)
+    }
+    const passwordHandlePassword = (value) => {
+        setPassword(value)
+    }
+
+    const LoginStatushandle = ()=>
+    {
+        const status = GetLoginStatus()
+        let new_sttaus = !status
+        setLoginStatus(new_sttaus)
+        console.log(new_sttaus)
+        return !status
+    }
+
+    const LoginRequest = async () => {
+    if (!name || !password) {
+        console.log("Sorry, one input is empty");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://172.16.0.250:6747/Login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, password })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error: ${errorText}`);
+        }
+
+        const result = await response.json(); // parse JSON
+        console.log("Success:", result.token); // print token
+        
+        setTimeout(() => {
+            LoginStatushandle()
+        }, 1000);
+
+    } catch (error) {
+        console.error("Request failed:", error);
+    }
+};
     return(
         <View 
         className='h-[500px]'
@@ -23,6 +75,7 @@ export default function LoginComponent({onStatusChange , navigation})
             placeholder='Enter Your Email Address'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
+            onChangeText={(value)=>{nameHandleChange(value)}}
             />
             </View>
 
@@ -40,6 +93,7 @@ export default function LoginComponent({onStatusChange , navigation})
             placeholder='Enter You Password'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
+            onChangeText={(value)=>{passwordHandlePassword(value)}}
             />
             </View>
 
@@ -47,7 +101,7 @@ export default function LoginComponent({onStatusChange , navigation})
                 <TouchableOpacity
                 className='flex-1 bg-buttonColor h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
-                onPress={()=> {navigation.navigate("Main Page", { screen: "DisplayFoodPage" })}}
+                onPress={()=> {LoginRequest()}}
                 >
                     <Text
                     style={{fontSize : 23}}

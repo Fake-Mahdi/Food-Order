@@ -1,4 +1,12 @@
-import { View, Text, TouchableOpacity,TextInput } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  TextInput, 
+  KeyboardAvoidingView, 
+  ScrollView, 
+  Platform 
+} from 'react-native';
 import { useState , useEffect } from 'react';
 import {setLoginStatus , GetLoginStatus} from "../../api/loginStatus"
 
@@ -13,11 +21,55 @@ export default function SignupComponent({onStatusChange})
         console.log(new_sttaus)
         return !status
     }
+
+    const [name , setName] = useState("")
+    const [email , setEmail] = useState("")
+    const [password , setPassword] = useState("")
+
+    const nameHandleChange = (value) => {
+        setName(value)
+    }
+    const emailHandleChange = (value) => {
+        setEmail(value)
+    }
+    const passwordHandlePassword = (value) => {
+        setPassword(value)
+    }
+   const PostRequest = async () => {
+    try {
+        const response = await fetch("http://172.16.3.40:6747/Signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: name, email: email, password: password })
+        });
+
+        console.log("HTTP Status:", response.status); // e.g., 201
+        console.log("Status Text:", response.statusText); // e.g., "Created"
+        console.log("Headers:", response.headers);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error: ${errorText}`);
+        }
+
+        const result = await response.text(); 
+        console.log("Success:", result);
+        setName("")
+        setEmail("")
+        setPassword("")
+
+    } catch (error) {
+        console.error("Request failed:", error);
+    }
+};
+
     
-    return(
+  return(
         <View 
-        className='h-[500px]'
-        style={{backgroundColor:"white"}}
+        
+        style={{backgroundColor:"white" , minHeight:800}}
         >
             <View >
             <Text
@@ -30,6 +82,7 @@ export default function SignupComponent({onStatusChange})
             borderBottomColor: '#CBCBCB', 
             
             }}
+            onChangeText={(value) => {nameHandleChange(value)}}
             placeholder='Enter Your Full Name...'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
@@ -50,6 +103,7 @@ export default function SignupComponent({onStatusChange})
             placeholder='Enter Your Email Address'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
+            onChangeText={(value) => {emailHandleChange(value)}}
             />
             </View>
 
@@ -64,6 +118,7 @@ export default function SignupComponent({onStatusChange})
             borderBottomColor: '#CBCBCB', 
             
             }}
+            onChangeText={(value) => {passwordHandlePassword(value)}}
             placeholder='Enter You Password'
             className='font-quicksand-bold '
             placeholderTextColor={"#000000"}
@@ -74,7 +129,7 @@ export default function SignupComponent({onStatusChange})
                 <TouchableOpacity
                 className='flex-1 bg-buttonColor h-full items-center justify-center rounded-[24px]'
                 activeOpacity={1}
-                onPress={() => {LoginStatushandle()}}
+                onPress={() => {PostRequest()}}
                 >
                     <Text
                     style={{fontSize : 18}}
