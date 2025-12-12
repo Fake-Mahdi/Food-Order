@@ -41,6 +41,8 @@ const StackTemplate = ({ routename, screens }) => {
 const AuthStack = () => (
   <Stack.Navigator initialRouteName="FirstPage" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="FirstPage" component={FirstPage} />
+    <Stack.Screen name="SuccessLogin" component={SuccessLogin} />
+    <Stack.Screen name="CategoriePage" component={CategoriePage} />
   </Stack.Navigator>
 );
 
@@ -59,6 +61,7 @@ const TabIcons = (source) => ({ color, size }) => (
 // 🔹 Define screens for each stack
 const firstStackScreens = [
   { name: 'CategoriePage', component: CategoriePage, options: { headerShown: false } },
+  { name: 'SuccessLogin', component: SuccessLogin, options: { headerShown: false } },
   { name: 'MainMenuPage', component: MainMenuPage, options: { headerShown: false } },
   {name: 'CartPage', component: CartPage, options: { headerShown: false }},
   { name: 'DisplayFoodPage', component: DisplayFood, options: { headerShown: false } },

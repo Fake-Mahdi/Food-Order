@@ -1,7 +1,22 @@
 // app/SecondPage.jsx
 import { View, Text, Button , Image, TouchableOpacity } from 'react-native';
-
+import { useEffect, useState } from 'react';
+import {setLoginStatus , GetLoginStatus} from "../api/loginStatus"
 export default function SuccessLogin({ navigation }) {
+  const LoginStatushandle = ()=>
+    {
+        const status = GetLoginStatus()
+        let new_sttaus = !status
+        setLoginStatus(new_sttaus)
+        console.log(new_sttaus)
+        return !status
+    }
+  useEffect(() => {
+     setTimeout(() => {
+            LoginStatushandle()
+        }, 2000);
+
+  },[])
   return (
     <View className='h-full w-full bg-white'>
       <View className="relative w-full h-[450px] ">
@@ -32,8 +47,8 @@ export default function SuccessLogin({ navigation }) {
         </Text>
         <View className='flex flex-row justify-center items-center w-full'>
           <TouchableOpacity
-        className=' flex-1 items-center justify-center mt-[16px] bg-yellow-400 p-5 rounded-full mx-6'
-        onPress={()=> {navigation.navigate("FirstPage")}}
+        className=' flex-1 items-center justify-center mt-[16px] bg-buttonColor p-5 rounded-full mx-6'
+        onPress={()=> {navigation.navigate("CategoriePage")}}
         >
           <Text
           style={{fontSize:24}}

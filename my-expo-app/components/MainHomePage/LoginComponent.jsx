@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity,TextInput } from 'react-native';
 import { useState } from 'react';
 import SuccessLogin from '../../app/SuccessLogin';
 import {setLoginStatus , GetLoginStatus} from "../../api/loginStatus"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function LoginComponent({onStatusChange , navigation})
@@ -16,14 +17,6 @@ export default function LoginComponent({onStatusChange , navigation})
         setPassword(value)
     }
 
-    const LoginStatushandle = ()=>
-    {
-        const status = GetLoginStatus()
-        let new_sttaus = !status
-        setLoginStatus(new_sttaus)
-        console.log(new_sttaus)
-        return !status
-    }
 
     const LoginRequest = async () => {
     if (!name || !password) {
@@ -32,7 +25,7 @@ export default function LoginComponent({onStatusChange , navigation})
     }
 
     try {
-        const response = await fetch("http://172.16.0.250:6747/Login", {
+        const response = await fetch("http://192.168.1.6:6747/Login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -46,11 +39,17 @@ export default function LoginComponent({onStatusChange , navigation})
         }
 
         const result = await response.json(); // parse JSON
-        console.log("Success:", result.token); // print token
+        console.log("Success:", result); // print token
+        const token = result.token
+        try {
+            await AsyncStorage.setItem('jwtToken', result.token);
+            console.log("Token saved successfully");
+        } catch (e) {
+            console.log('Failed to save token', e);
+        }
         
-        setTimeout(() => {
-            LoginStatushandle()
-        }, 1000);
+        navigation.navigate("SuccessLogin");
+
 
     } catch (error) {
         console.error("Request failed:", error);
